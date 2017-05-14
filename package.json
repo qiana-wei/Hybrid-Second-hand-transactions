@@ -1,0 +1,32 @@
+{
+  "name": "com.example.hello",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "displayName": "HelloWorld",
+  "cordova": {
+    "platforms": [
+      "android",
+      "browser",
+      "ios"
+    ],
+    "plugins": {
+      "cordova-plugin-whitelist": {}
+    }
+  },
+  "dependencies": {
+    "cordova-android": "^6.2.3",
+    "cordova-browser": "^4.1.0",
+    "cordova-ios": "~4.4.0",
+    "cordova-plugin-whitelist": "1",
+    "body-parser": "~1.16.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.0",
+    "express": "~4.14.1",
+    "jade": "~1.11.0",
+    "morgan": "~1.7.0",
+    "serve-favicon": "~2.3.2"
+  }
+}
