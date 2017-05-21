@@ -1,0 +1,71 @@
+<section class="group-panel">
+    <div class="col-md-12">
+        <h3>Organization profile</h3>
+        <hr/>
+        <form>
+            <dl class="form-group clearfix">
+                <dt>
+                    <label>Contact:</label>
+                </dt>
+                <dd>
+                  <input type="text" class="form-ctl input-contrast col-sm-5 col-xs-8" placeholder="Contact" v-model='orgs.contact' :disabled='myrole=="Members"' />
+                </dd>    
+            </dl>
+            <dl class="form-group clearfix">
+                <dt>
+                    <label>Description: </label>
+                </dt>
+                <dd>
+                    <textarea type="textarea" class="form-ctl input-contrast col-sm-5 col-xs-8" rows="3" placeholder="Description" style="resize:none" v-model='orgs.description' :disabled='myrole=="Members"' />
+                </dd> 
+            </dl>
+            <dl class="form-group clearfix">
+                <dt>
+                    <label>Billing contact: </label>
+                </dt>
+                <dd>
+                    <input type="textarea" class="form-ctl input-contrast col-sm-5 col-xs-8" placeholder="Billing contact email" v-model='orgs.billing_contact' :disabled='myrole=="Members"' />
+                </dd> 
+            </dl>
+            <dl class="form-group clearfix">
+                <dt>
+                    <label>Technology contact: </label>
+                </dt>
+                <dd>
+                    <input type="textarea" class="form-ctl input-contrast col-sm-5 col-xs-8" placeholder="Technology contact email" v-model='orgs.tech_contact' :disabled='myrole=="Members"' />
+                </dd> 
+            </dl>
+            <dl class="form-group clearfix">
+                <dt>
+                    <label>Website:</label>
+                </dt>
+                <dd>
+                    <input type="text" class="form-ctl input-contrast col-sm-5 col-xs-8" id="website" placeholder="https://www.simright.com" v-model='orgs.website' :disabled='myrole=="Members"' />
+                </dd> 
+            </dl>
+            <dl class="form-group clearfix">
+                <dt>
+                    <label>Location: </label>
+                </dt>
+                <dd>
+                    <div class="clearfix">
+                        <input type="text" class="form-ctl input-contrast col-sm-5 col-xs-8" placeholder="Country" v-model='orgs.country' :disabled='myrole=="Members"'>
+                    </div>
+                    <br/>
+                    <div class="clearfix">
+                        <input type="text" class="form-ctl input-contrast col-sm-5 col-xs-8" placeholder="Province" v-model='orgs.province' :disabled='myrole=="Members"'>
+                    </div>  
+                    <br/>
+                    <div class="clearfix">
+                        <input type="text" class="form-ctl input-contrast col-sm-5 col-xs-8" placeholder="City" v-model='orgs.city' :disabled='myrole=="Members"'>
+                    </div>
+                </dd> 
+            </dl>
+            <button type="button" class="bn" @click='editOrgInfoOver()' v-if='myrole!="Members"'>Update Profile</button>
+            <br/>
+            <small>
+                We store your personal data in our database. See our <a href="">privacy policy</a>  for more information.
+            </small>
+        </form>
+    </div>
+</section>

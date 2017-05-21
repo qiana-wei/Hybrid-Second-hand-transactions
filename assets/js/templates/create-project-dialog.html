@@ -1,0 +1,57 @@
+<div class="dialog-mask" style="display:flex">
+    <div class="dialog project-create-dialog" role="dialog">
+        <div class="heading text-center">
+            <button class="pull-right close-button" @click="close()">&times;</button>
+            <div class="caption">
+                <h1>
+                    <i class="fa fa-cubes"></i>
+                </h1>
+                <h4>Create a project for workflow</h4>
+                <p class="sub-text">All the members in the project will involve in the workflow</p>
+            </div>
+        </div>
+        <div class="body">
+            <form>
+                <div class="form-group clearfix">
+                    <label class="col-xs-5">
+                        Project name:
+                    </label>
+                    <input type="text" class="form-ctl col-xs-7" v-model="projectInfo.name" placeholder="Project name..." @blur="checkName()" @keyup="splitName()">
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-xs-5">
+                        Choose application:
+                    </label>
+                    <select class="form-select col-xs-7" v-model="projectInfo.app_sname" name="">
+                        <option :value=app.name v-for="app in appList">{{app.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-xs-5">
+                        Choose authority:
+                    </label>
+                    <select class="form-select col-xs-7" v-model="projectInfo.private" name="" id="">
+                        <option value="true">Private</option>
+                        <option value="false">Public</option>
+                    </select>
+                </div>
+                <div class="form-group clearfix" v-if="otherMembers.length > 0">
+                    <label class="col-xs-5">
+                        Choose members:
+                    </label>
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <label v-for="user in otherMembers" class="col-xs-3 text-overflow">
+                                <input type="checkbox" :value="user.name" v-model="projectInfo.user_list">
+                                <span :title="user.name">{{user.name}}</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="footer">
+            <button type="button" class="bn pull-right" @click="createProject()">Create</button>
+        </div>
+    </div>
+</div>

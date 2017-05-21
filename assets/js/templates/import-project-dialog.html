@@ -1,0 +1,58 @@
+<div class="dialog-mask" style="display:flex">
+    <div class="dialog dialog-sm" role="dialog">
+        <div class="heading text-center">
+            <button class="pull-right close-button" @click="close()">&times;</button>
+            <div class="caption">
+                <h1>
+                    <i class="fa fa-cubes"></i>
+                </h1>
+                <h4>Import a project for workflow</h4>
+                <p class="sub-text">All the members in the project will involve in the workflow</p>
+            </div>
+        </div>
+        <div class="body">
+            <form v-if='usersProjects.length > 0'>
+                <div class="form-group clearfix">
+                    <label class="col-xs-5">
+                        Select Project:
+                    </label>
+                    <select class="form-select col-xs-7" v-model='importProjectInfo.uuid'>
+                        <option :value="project.uuid"  v-for='project in usersProjects' >{{project.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-xs-5">
+                        Rename project:
+                    </label>
+                        <input class=" form-ctl col-xs-7" type="text" v-model='importProjectInfo.rename'>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-xs-5">
+                        Choose authority:
+                    </label>
+                    <select class="form-select col-xs-7" name="" id="" v-model='importProjectInfo.private'>
+                        <option value="true">Private</option>
+                        <option value="false">Public</option>
+                    </select>
+                </div>
+                <div class="form-group clearfix" v-if="otherMembers.length > 0">
+                    <label class="col-xs-5">
+                        Choose members:
+                    </label>
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <label v-for="user in otherMembers" class="col-xs-3 text-overflow">
+                                <input type="checkbox" :value="user.name" v-model="importProjectInfo.user_list">
+                                <span :title="user.name">{{user.name}}</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <p v-else class="text-center">No Project</p>
+        </div>
+        <div class="footer" v-if='usersProjects.length > 0'>
+            <button type="button" class="bn pull-right" @click="importProject()">Create</button>
+        </div>
+    </div>
+</div>

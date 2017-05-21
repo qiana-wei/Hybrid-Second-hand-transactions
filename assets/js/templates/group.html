@@ -1,0 +1,42 @@
+<div class="group-wp">
+    <section class="caption">
+        <div class="container">
+            <div class="clearfix">
+                <div class="pull-left">
+                    <div class="avatar-wrap">
+                        <img width='100' height='100' :src="orgInfo.avatar || '/home/static/images/icon-org.png'" class="org-avatar">
+                        <span id="upload-loading-wrap"  v-if="isUploading" >
+                            <span class="upload-loading"></span>
+                        </span>
+                    </div>
+                    <label for="upload-avatar" class="bn bn-sm text-center" v-if="myrole=='Owner'">
+                        Upload
+                    </label>
+                </div>
+                <div class="col-xs-6 desc">
+                    <h1>{{orgName}}</h1>
+                    <p class="sub-text">{{ orgInfo.description }}</p>
+                </div>
+                <input type="file" id="upload-avatar" class="hide" accept="image/png, image/jpeg, image/gif, image/jpg, image/bmp" @change='uploadOrgAvatar($event)' />
+            </div>
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" v-for="tab in tabs" @click='currentView = tab.name; members = allMembers' :class="{'active': currentView === tab.name }">
+                    <a>
+                        <i class="fa" aria-hidden="true" :class="'fa-' + tab.icon"></i> {{tab.name}}
+                        <span class="badge" v-if="typeof tab.num === 'number'">
+                            {{tab.num}}
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <div class="container">
+        <transition name="fade">
+            <component v-on:event="eventManager" :appList="appList" :is="currentView" :myrole="myrole" :members="members"></component>
+        </transition>
+    </div>
+
+    <crop-dialog v-on:event="eventManager" :isShow="isCropModalVisible"/>
+    <invite-dialog v-on:event="eventManager" v-if = "isInviteModalVisible" />
+</div>

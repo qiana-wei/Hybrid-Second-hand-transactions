@@ -1,0 +1,24 @@
+<div class="dialog-mask" style="display:flex">
+    <div class="dialog dialog-sm add-members-dialog" role="dialog">
+        <div class="heading text-center">
+            <button class="pull-right close-button" @click="close()">&times;</button>
+            <div class="caption">
+                <h4>Add member to the project</h4>
+            </div>
+        </div>
+        <div class="body">
+            <form v-if = 'hasProjectInviters'>
+                <div class="form-group clearfix">
+                    <label>
+                        Choose member:
+                    </label>
+                    <select class="form-select col-xs-6" v-model="inviterName" name="">
+                        <option :value=user.name v-for="user in projectInviters">{{user.name}}</option>
+                    </select>
+                    <button type="button" class="bn bn-sm" @click="addProjectMembers()">Add</button>
+                </div>
+            </form>
+            <p v-else class="text-center">No more member</p>
+        </div>
+    </div>
+</div>

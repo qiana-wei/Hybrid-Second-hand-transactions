@@ -1,0 +1,16 @@
+<div class="dialog-mask crop-dialog" :style="{ display: isShow? 'flex' : 'none' }">
+    <div class="dialog" role="dialog">
+        <div class="heading">
+            <h4 class="modal-title">Crop your new avatar.</h4>
+            <button class="pull-right close-button" @click="close()">&times;</button>
+        </div>
+        <div class="body">
+            <div class="crop">
+                <div id="upload-picture"></div>
+            </div>
+        </div>
+        <div class="footer">
+            <button type="button" class="bn pull-right" id="upload-result" @click="upload()">Set your avatar</button>
+        </div>
+    </div>
+</div>
