@@ -3,3 +3,9 @@ platforms
 plugins
 .DS_Store
 .vscode
+www/js
+www/css
+www/img
+www/fonts
+www/manifest.json
+document/~$docuv1.doc
