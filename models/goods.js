@@ -12,7 +12,7 @@ var goodSchema = mongoose.Schema({
     like : Number,
     sold : Boolean,
     sold_time : Date,
-    user_id : Schema.Types.ObjectId,
+    // user_id : Schema.Types.ObjectId,
 })
 
 var goodModel = mongoose.model('goods', goodSchema)

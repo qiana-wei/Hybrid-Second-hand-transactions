@@ -1,0 +1,18 @@
+<div class="login">
+    <form>
+        <div>
+            <label><i class="fa fa-phone" aria-hidden="true"></i></label>
+            <input type="text" name="phone" placeholder="请输入手机号" v-model="user_phone">
+        </div>
+        <div class="check_code">
+            <div>
+                <label><i class="fa fa-key" aria-hidden="true"></i></label>
+                <input type="text" name="check_code" placeholder="请输入验证码" v-model="check_code" >
+            </div>
+            <div>
+                <button class="bn" type="button" @click="getCheckCode()">点击获取</button>
+            </div>
+        </div>
+        <button class="login_btn bn" type="button" @click="checkCode()">登陆</button>
+    </form>
+</div>
