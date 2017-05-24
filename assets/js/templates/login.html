@@ -1,4 +1,4 @@
-<div class="login">
+<section class="login">
     <form>
         <div>
             <label><i class="fa fa-phone" aria-hidden="true"></i></label>
@@ -10,9 +10,10 @@
                 <input type="text" name="check_code" placeholder="请输入验证码" v-model="check_code" >
             </div>
             <div>
-                <button class="bn" type="button" @click="getCheckCode()">点击获取</button>
+                <button class="bn bn-disabled" type="button" v-if="isGetCheckCode"><input type="text" v-model='timeWait' class="timeWait">s 后重试</button>            
+                <button class="bn" type="button" @click="getCheckCode()" v-else>点击获取</button>
             </div>
         </div>
         <button class="login_btn bn" type="button" @click="checkCode()">登陆</button>
     </form>
-</div>
+</section>

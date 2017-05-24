@@ -4,6 +4,7 @@
     background:rgba(19,29,49,0.9);
     @include flex-center();
     flex-direction: column;
+    color: #f1f1f1;
     >form{
         width: 100vw;
         min-height: 30vh;
@@ -32,6 +33,12 @@
                 border-bottom: 1px solid #ccc;
                 margin-right: 5px;
             }
+        }
+        .timeWait{
+            margin: 0;
+            padding: 0;
+            width: 20px;
+            height: 20px;
         }
     }
 }
