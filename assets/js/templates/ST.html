@@ -1,5 +1,5 @@
-<div data-page="welcome">
+<div data-page="base">
     <transition name="fade">
-        <component v-on:event="eventManager" :is="currentView" ></component>
+        <component v-on:event="eventManager" :is="currentView" :userInfo="userInfo" ></component>
     </transition>
 </div>
