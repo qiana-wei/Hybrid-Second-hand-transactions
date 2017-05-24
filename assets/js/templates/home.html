@@ -1,3 +1,55 @@
-<div class="home">
-    home
-</div>
+<section class="home">
+    <header>
+        <label><i class="fa fa-search" aria-hidden="true"></i><input type="text" placeholder="搜索商品分类、名称" @focus="changeCurrentView('search')"></label>
+    </header>
+    <main>
+        <nav>
+            <li class="active">发布时间</li>
+            <li>浏览量</li>
+            <li>留言量</li>
+            <li>喜爱值</li>
+        </nav>
+        <div class="content">
+            <section @click="changeCurrentView('goods-details')">
+                <div class="title">
+                    <img src="./img/girl.jpeg" alt="avatar" class="avatar">
+                    <span>User Name</span>
+                </div>
+                <div class="img_list">
+                    <div style=" background-image:url('./img/true.jpeg')"></div>
+                    <div style=" background-image:url('./img/normal.png')"></div>
+                    <div style=" background-image:url('./img/normal.png')"></div>
+                </div>
+                <div class="description">
+                    <div>
+                        <span>¥</span>
+                        <span>9.4</span>
+                    </div>
+                    <div>
+                        <p>测试示例</p>
+                        <div>
+                            <span>8 成新</span>
+                            <span><i class="fa fa-commenting-o" aria-hidden="true"></i> 7</span>
+                            <span><i class="fa fa-heart" aria-hidden="true"></i> 7</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="active">
+            <i class="fa fa-home" aria-hidden="true"></i>
+            <span>首页</span>
+        </div>
+        <div @click="changeCurrentView('publish')">
+            <div class="add">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div @click="changeCurrentView('mine')">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <span>我的</span>
+        </div>
+    </footer>
+</section>

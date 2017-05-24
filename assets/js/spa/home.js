@@ -7,5 +7,8 @@ Vue.component('home', {
         }
     },
     methods: {
+        changeCurrentView(name){
+            this.$emit('event','changeCurrentView',name)
+        }
     }
 })

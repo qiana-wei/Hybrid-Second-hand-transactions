@@ -1,0 +1,158 @@
+.home{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    >header{
+        width: 100vw;
+        height: 60px;
+        box-shadow: -1px -1px 1px 1px #ccc;
+        @include flex-center();
+        >label{
+            border:1px solid #ccc;
+            border-radius: 20px;
+            overflow: hidden;
+            padding: 0 10px;
+            background-color:rgba(220,220,220,0.7)
+            i{
+                color: #555;
+            }
+        }
+        input{
+            width: 50vw;
+            height: 25px;
+            border: none;
+            margin: 0;
+            margin-left: 10px;
+            background-color: transparent;
+            outline: none;
+        }
+    }
+    >footer{
+        height: 50px;
+        border-top: 1px solid #ccc;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: relative;
+        >div{
+            @include flex-center();
+            flex-direction: column;
+        }
+        .fa{
+            font-size: 20px;
+        }
+        .active{
+             color: rgb(255,199,0);
+        }
+        .add{
+            position: absolute;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            @include flex-center();
+            top: -67%;
+            background-color: rgb(255,199,0);
+            .fa{
+                font-size: 30px;
+                color: #fff;
+            }
+        }
+    }
+    >main{
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;  
+        flex-direction: column;
+        >nav{
+            height: 50px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: -1px  1px #ccc;
+            li{
+                list-style: none;
+            }
+            .active{
+             color: rgb(255,199,0);
+            }
+        }
+        .content{
+            height: 100%;
+            overflow: scroll;
+            background: #eee;
+            >section{
+                width: 100%;
+                border-bottom:1px solid #ccc;
+                border-top: 1px solid #ccc;
+                margin-bottom: 5px;
+                background: #fff;
+                >div{
+                    padding: 0 5px;
+                }
+            }
+            .title{
+                padding: 5px 0;
+                display: flex;
+                align-items: center; 
+                margin-bottom: 10px;
+                .avatar{
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    margin: 0 20px;
+                    border:1px solid #ccc;
+                }
+            }
+            .img_list{
+                height: 120px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                >div{
+                    width: 120px;
+                    height: 120px;
+                    background-repeat:no-repeat;
+                    background-position: center;
+                    background-size:contain;
+                }
+            }
+            .description{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                margin: 10px;
+                >div{
+                    &:first-child{
+                        margin-right: 10px;
+                        &>span:last-child{
+                            font-size: 30px;
+                        }
+                    }
+                    &:last-child{
+                        margin-left: 10px;
+                        flex: 1;
+                        &>p{
+                            font-size: 17px;
+                        }
+                        &>div{
+                            display: flex;
+                            justify-content: flex-end;
+                            align-items: center;
+                            padding-bottom: 5px;
+                            >span{
+                                display: inline-block;
+                                min-width: 40px;
+                                margin-left: 20px; 
+                            }
+                        }
+                    }
+                }
+            }
+            .fa-heart{
+                color: #f00;
+            }
+        }
+    }
+}
