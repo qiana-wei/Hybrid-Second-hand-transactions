@@ -1,0 +1,25 @@
+<section class="supplement">
+    <div>
+        使用前～先来完善下个人信息吧～
+    </div>
+    <div>
+        <form>
+            <label>
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <input type="text" placeholder="必须有个响亮的用户名～" v-model="username">
+            </label>
+            <label>
+                <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                <input type="text" placeholder="应该表明入学年份～" v-model="admission_time">
+            </label>
+            <label>
+                <i class="fa fa-venus-mars" aria-hidden="true"></i>
+                <input type="text" placeholder="性别也要保密 ?_？" v-model="sex">
+            </label>
+        </form>
+    </div>
+    <div>
+        <button class="bn">我要传头像</button>
+        <button class="bn" @click="startUse()">开始使用APP</button>
+    </div>
+</section>
