@@ -18,3 +18,28 @@ function getLoginTemplate(){
         gulp_inject:'../templates/login.html'
     }
 }
+function getSearchTemplate(){
+    return {
+        gulp_inject:'../templates/search.html'
+    }
+}
+function getMineTemplate(){
+    return {
+        gulp_inject:'../templates/mine.html'
+    }
+}
+function getDetailsTemplate(){
+    return {
+        gulp_inject:'../templates/details.html'
+    }
+}
+function getPublishTemplate(){
+    return {
+        gulp_inject:'../templates/publish.html'
+    }
+}
+function getSupplementTemplate(){
+    return{
+        gulp_inject:'../templates/supplement.html'
+    }
+}

@@ -3,14 +3,14 @@
     justify-content: center;
     align-items: center;
 }
-html,body,body>div{
+html,body,body>div:first-child{
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
     font-family: Verdana, Tahoma, "Microsoft YaHei", Sans-serif;
     -webkit-font-smoothing: antialiased;
-    background-color: #f1f1f1;
+    background-color: #fff;
     color: #555;
 }
 .bn{
@@ -21,4 +21,8 @@ html,body,body>div{
     margin: 0;
     padding: 5px;
     outline: none;
+}
+.bn-disabled{
+    background-color:#ccc;
+    color: #fff;
 }

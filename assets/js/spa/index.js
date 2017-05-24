@@ -10,13 +10,24 @@ new Vue({
         },{
             name:'home'
         },{
-            name:'goodsdetails'
+            name:'goods-details'
         },{
-            name:'uploadgoods'
+            name:'publish'
         },{
-            name:'profile'
+            name:'mine'
+        },{
+            name:'search'
+        },{
+            name:'supplement'
         }
         ]
+    }, 
+    mounted(){
+        mui.init();
+        // localStorage.setItem('userInfo','1111');
+        // console.log(localStorage.getItem('userInfo'));
+        // localStorage.clear();
+        this.userInfo = JSON.parse(localStorage.getItem('userInfo'));
     },
     template:getSTTemplate(),
     methods:{
@@ -27,8 +38,5 @@ new Vue({
             console.log(name);
             this.currentView = name;
         }
-    },
-    mounted(){
-        this.userInfo = localStorage.getItem('userInfo');
     }
 })
