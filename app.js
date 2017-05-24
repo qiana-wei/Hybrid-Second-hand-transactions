@@ -12,7 +12,7 @@ var db = mongoose.createConnection('localhost', 'secondhand-transformation'); //
 
 //router setup
 var index = require('./routes/index');
-var apis  =require('./routes/apis');
+var user_api = require('./routes/user_api');
 
 var userModel = require('./models/users')
 var goodModel = require('./models/goods')
@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, 'www')));
 
 //router usage setup
 app.use('/', index);
-app.use('/api', apis)
+app.use('/api/user',user_api)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
