@@ -4,24 +4,20 @@ let DataService = {
         return this.ajax('GET', url, data)
     },
     post: function (url, data) {
-        let csrftoken = $('meta[name=csrf-token]').attr('content');
-        return this.ajax('POST', url, data, csrftoken)
+        return this.ajax('POST', url, data )
     },
     delete: function (url, data) {
-        let csrftoken = $('meta[name=csrf-token]').attr('content');        
-        return this.ajax('DELETE', url, data, csrftoken)
+        return this.ajax('DELETE', url, data)
     },
     patch: function (url, data) {
-        let csrftoken = $('meta[name=csrf-token]').attr('content');        
-        return this.ajax('PATCH', url, data, csrftoken)
+        return this.ajax('PATCH', url, data)
     },
     put:function(url,data){
-        let csrftoken = $('meta[name=csrf-token]').attr('content');        
-        return this.ajax('PUT', url, data, csrftoken)
+        return this.ajax('PUT', url, data)
     }
 };
 
-DataService.ajax = function (type, url, data, csrftoken) {
+DataService.ajax = function (type, url, data, ) {
     let re = /\?\?/;
     if (re.test(url)) {
         console.error('please dont\'t add GET string after url which is incluid \'?\'. ');
@@ -33,7 +29,7 @@ DataService.ajax = function (type, url, data, csrftoken) {
     return $.when($.ajax({
         beforeSend: function (xhr) {
             if (type !== 'GET' && !this.crossDomain) {
-                xhr.setRequestHeader("X-CSRFToken", csrftoken)
+                xhr.setRequestHeader("X-", )
             }
         },
         type,

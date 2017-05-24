@@ -1,0 +1,116 @@
+[data-type='notification'], [data-type='loading'] {
+    font-size: 15px;
+    @media (max-width: 600px) {
+        font-size: 12px;
+    }
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, .8);
+    border-radius: .3em;
+    padding: .8em 2em;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    min-width: 200px;
+    >div {
+        font-size: 1em;
+        word-break: break-word;
+    }
+    >[data-icon] {
+        font-size: 2em;
+        margin-right: .6em;
+    }
+    @mixin iconfont {
+        font-family: FontAwesome;
+    }
+    >[data-icon='success']:before {
+        @include iconfont;
+        content: "\f058";
+    }
+    >[data-icon='error']:before {
+        @include iconfont;
+        content: "\f057"
+    }
+    >[data-icon='warning']:before {
+        @include iconfont;
+        content: "\f071";
+    }
+}
+[data-type="dialog"]{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .modal-content{
+        padding: 0 10px;
+        width:350px;
+        >.modal-header{
+            padding-bottom:0;
+            >.modal-title{
+                margin-top: 10px;
+                font-size: 30px;
+                font-weight: bold;
+            }
+        }
+        >.modal-body{
+            text-align: center;
+            font-size: 16px;
+            color: #797979;
+        }
+        >.modal-footer{
+            display: flex;
+            justify-content: center;
+            >.btn{
+                font-size: 17px;
+                border-radius: .3em;
+                padding:0 4px;
+                min-width:5em;
+                height:2em;
+                line-height:2em;
+            }
+            >[data-cancel]{
+                border: 1px solid #ccc;
+                margin-left: 13px;
+            }
+        }
+    }
+    [data-icon] {
+        display: inline-block;
+        font-size: 3em;
+        border:4px solid;
+        border-radius: 50%;
+        width: 2em;
+        height: 2em;
+        line-height: 1.8em;
+    }
+    @mixin iconfont {
+        font-family: FontAwesome;
+    }
+    [data-icon='success']{
+        border-color:rgba(165, 220, 134, 0.5);   
+        &:before{
+            @include iconfont;
+            content: "\f00c";
+            color:#64e21e;    
+        }
+    }
+    [data-icon='error']{
+        border-color: rgba(234, 48, 48, 0.5);      
+        &:before {
+            @include iconfont;
+            content: "\f00d";
+            color: #ea3030;
+        }
+    }
+    [data-icon='warning']{
+        border-color: rgba(249,121,9,0.5);        
+        &:before {
+            @include iconfont;
+            content: "\f12a";
+            color: rgb(249,121,9);
+        }
+    }
+}
