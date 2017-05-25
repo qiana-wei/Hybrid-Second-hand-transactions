@@ -30,7 +30,7 @@ function getMineTemplate(){
 }
 function getDetailsTemplate(){
     return {
-        gulp_inject:'../templates/details.html'
+        gulp_inject:'../templates/goods-details.html'
     }
 }
 function getPublishTemplate(){
