@@ -1,3 +1,38 @@
 <section class="publish">
-    publish
+    <header>    
+        <i class="fa fa-chevron-left" aria-hidden="true" @click="changeCurrentView('home')"></i>
+        <span>发布二手商品</span>
+    </header>
+    <main>
+        <div>
+            <p>上传商品图片</p>
+            <div>
+                <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div>
+            <p>商品名称</p>
+            <input type="text" placeholder="关键词要突出哦～" v-model="goodsInfo.goods_name">
+        </div>
+        <div>
+            <p>商品价格</p>
+            <input type="number" step="0.1" min="0" placeholder="要写人民币的" v-model="goodsInfo.price">
+        </div>
+        <div>
+            <p>商品新旧程度</p>
+            <input type="number" step="1" min="0" max="10" placeholder="满分10分" v-model="goodsInfo.degree">
+        </div>
+        <div>
+            <p>商品类别</p>
+            <input type="text" placeholder="多个种类，用空格分隔哦～" v-model="good_type">
+        </div>
+        <div>
+            <p>商品描述</p>
+            <textarea placeholder="详详细细的描述更容易买出哦。" v-model="goodsInfo.description"></textarea>
+        </div>
+        <div class="btn">
+            <button class="bn" @click="changeCurrentView('home')">取消</button>        
+            <button class="bn" @click="publishGoods()">发布</button>
+        </div>
+    </main>
 </section>
