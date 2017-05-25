@@ -39,6 +39,7 @@ Vue.component('login', {
              utils.DataService.post(url,data).done(res=>{
                 console.log(res);
                 localStorage.setItem('userInfo',JSON.stringify(res.userInfo))
+                this.$emit('event','changeUserInfo',res.userInfo)
                 this.$emit('event','changeCurrentView',res.changeCurrentView)
             })
         }
