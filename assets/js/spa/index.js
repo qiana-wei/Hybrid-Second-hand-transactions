@@ -3,6 +3,7 @@ new Vue({
     data:{
         userInfo:'',
         currentView:'welcome',
+        goods_id:'',
         pages:[{
             name:'welcome'
         },{
@@ -24,9 +25,6 @@ new Vue({
     }, 
     mounted(){
         mui.init();
-        // localStorage.setItem('userInfo','1111');
-        // console.log(localStorage.getItem('userInfo'));
-        // localStorage.clear();
         this.userInfo = JSON.parse(localStorage.getItem('userInfo'));
     },
     template:getSTTemplate(),
@@ -37,6 +35,12 @@ new Vue({
         changeCurrentView(name) {
             console.log(name);
             this.currentView = name;
+        },
+        changeGoodsId(id){
+            this.goods_id = id;
+        },
+        changeUserInfo(userInfo){
+            this.userInfo = userInfo
         }
     }
 })
