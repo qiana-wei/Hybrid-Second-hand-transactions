@@ -9,9 +9,6 @@ Vue.component('supplement', {
             sex:'',
         }
     },
-    mounted(){
-
-    },
     methods: {
         changeCurrentView(name){
             this.$emit('event','changeCurrentView',name)
@@ -25,7 +22,7 @@ Vue.component('supplement', {
             }
             data = $.extend(data,this.userInfo)
             utils.DataService.patch(url,data).done(res=>{
-                console.log(res);
+                this.$emit('event','changeCurrentView','home')
             })
         }
     }

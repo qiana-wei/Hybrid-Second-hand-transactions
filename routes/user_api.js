@@ -75,11 +75,11 @@ router.post('/register',function(req,res){
                     if(users.length > 0){
                         res.send(200,{userInfo:users[0],changeCurrentView:'home'})
                     }else{
-                        let Module = new userModel({
+                        let Entity = new userModel({
                             phone:phone
                         })
-                        Module.save();
-                    res.send(201,{userInfo:Module,changeCurrentView:'supplement'})
+                        Entity.save();
+                    res.send(201,{userInfo:Entity,changeCurrentView:'supplement'})
                     }
                 })
         }else{
@@ -92,18 +92,28 @@ router.post('/register',function(req,res){
 
 //补充、修改、完善用户信息
 router.patch('/info',function(req,res){
-    console.log(req.body);
+    // console.log(req.body);
     let {
         _id,
         username,
         sex,
         admission_time
     } = req.body
+    let update = {}
+    username ? update.name = username : ''
+    sex ? update.sex = sex : ''
+    admission_time ? update.admission_time = admission_time : ''
     if(req.xhr || req.accepts('json,html')=='json'){
-        userModel.find({_id:_id},function(err,users){
-            console.log(users);
-            res.send(200,users)
+        userModel.update({_id:_id},update,function(err,result){
+            if(err){
+                console.log(err);
+                res.status(400).send(err)                
+            }else{
+                console.log(result)
+                res.status(200).send(result)                
+            }
         })
+
     }
 })
 

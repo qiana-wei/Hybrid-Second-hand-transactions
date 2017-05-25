@@ -1,10 +1,10 @@
 var mongoose = require('mongoose')
 
 var userSchema = mongoose.Schema({
-    phone:String,
-    name: String,
-    sex: Number,
-    admission_time:Date,
+    phone:{type:String},
+    name: {type:String},
+    sex: {type:String,default:'男'},
+    admission_time:{type:String},
     photo:String
 })
 
