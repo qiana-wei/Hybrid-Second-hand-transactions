@@ -1,3 +1,20 @@
 .goods-details{
-    
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content:flex-start;
+    flex-direction: column;
+    >header{
+        width: 100vw;
+        height: 60px;
+        box-shadow: -1px -1px 1px 1px #ccc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        i{
+            position: absolute;
+            left: 30px;
+        }
+    }
 }
