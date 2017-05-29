@@ -1,8 +1,7 @@
 var mongoose = require('mongoose')
-var users = require('./users')
 
 var goodSchema = mongoose.Schema({
-    name:{type:String},
+    goods_name:{type:String},
     img : {type:[]},
     price : {type:Number},
     degree : {type:Number},
