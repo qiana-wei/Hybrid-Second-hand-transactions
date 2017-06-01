@@ -1,0 +1,134 @@
+.mine{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content:flex-start;
+    flex-direction: column;
+    header{
+        width: 100vw;
+        height: 60px;
+        box-shadow: -1px -1px 1px 1px #ccc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        i{
+            position: absolute;
+            left: 30px;
+        }
+        .edit{
+            position: absolute;
+            right: 30px;
+        }
+    }
+    main{
+        width: 100vw;
+        flex: 1;
+        overflow-y: scroll;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 30px;
+        img{
+            width: 30vw;
+            height: 30vw;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+        }
+        form{
+            margin-top: 10px;
+            font-size: 14px;
+            label{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                margin-bottom: 10px;
+                span{
+                    display: block;
+                    width: 30vw;
+                    color: #8f8f94;
+                }
+                input{
+                    margin: 0;
+                    font-size: 14px;
+                    width: 45vw;
+                    height: 30px;
+                    padding: 0;
+                    border: none;
+                    outline: none;
+                    border-bottom: 1px solid #ccc;
+                }
+            }
+        }
+        p{
+            width: 100%;
+            padding-left: 20px;
+        }
+        .mineGoods{
+            width: 100%;
+            flex: 1;
+            p{
+                color: #555;
+            }
+            >div{
+                display: flex;
+                justify-content: flex-start;
+                margin-left: 20px;
+                margin-bottom: 20px;
+                .goodPic{
+                    width: 20vw;
+                    height: 20vw;
+                    border: 1px solid #ccc;
+                    background-repeat:no-repeat;
+                    background-position: center;
+                    background-size:contain;
+                }
+                >div:last-child{
+                    flex: 1;
+                    display: flex;
+                    justify-content: space-between;
+                    flex-direction: column;
+                    p:last-child{
+                        width: 100%;
+                        padding-right: 20px;
+                        display: flex;
+                        justify-content: space-between;
+                        color: #8f8f94;
+                    }
+                }
+            }
+        }
+    }
+    >footer{
+        height: 50px;
+        border-top: 1px solid #ccc;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: relative;
+        >div{
+            @include flex-center();
+            flex-direction: column;
+        }
+        .fa{
+            font-size: 20px;
+        }
+        .active{
+             color: rgb(255,199,0);
+        }
+        .add{
+            position: absolute;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            @include flex-center();
+            top: -67%;
+            background-color: rgb(255,199,0);
+            .fa{
+                font-size: 30px;
+                color: #fff;
+            }
+        }
+    }
+}

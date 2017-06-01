@@ -92,18 +92,17 @@ router.post('/register',function(req,res){
 
 //补充、修改、完善用户信息
 router.patch('/info',function(req,res){
-    // console.log(req.body);
-    let {
-        _id,
-        username,
-        sex,
-        admission_time
-    } = req.body
-    let update = {}
-    username ? update.name = username : ''
-    sex ? update.sex = sex : ''
-    admission_time ? update.admission_time = admission_time : ''
     if(req.xhr || req.accepts('json,html')=='json'){
+        let {
+            _id,
+            username,
+            sex,
+            admission_time
+        } = req.body
+        let update = {}
+        username ? update.name = username : ''
+        sex ? update.sex = sex : ''
+        admission_time ? update.admission_time = admission_time : ''
         userModel.update({_id:_id},update,function(err,result){
             if(err){
                 console.log(err);
@@ -114,9 +113,36 @@ router.patch('/info',function(req,res){
             }
         })
 
+    }else{
+        res.status(400).send({msg:'Not JSON'})
+    }
+})
+//获取用户信息
+router.get('/:id',function(req,res){
+    console.log(req.path);
+    if(req.xhr || req.accepts('json,html')=='json'){
+        let userId = req.path.split('/').pop()
+        userModel.find({_id:userId},function(err,users){
+            if(users.length>0){
+                res.status(200).send(users[0])
+            }
+        })
+    }else{
+        res.status(400).send({msg:'Not JSON'})
     }
 })
 
+//获取用户发布的商品
+router.get('/goods/:id',function(req,res){
+    let userId = req.path.split('/').pop();
+    goodsModel.find({user_id:userId},function(err,goods){
+        if(goods.length>0){
+            res.status(200).send(goods)
+        }else{
+            res.status(200).send()
+        }
+    })
+})
 
 
 

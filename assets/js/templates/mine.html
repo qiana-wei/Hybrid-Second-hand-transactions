@@ -1,3 +1,59 @@
 <section class="mine">
-    mine
+    <header>
+        <i class="fa fa-chevron-left" aria-hidden="true" @click="changeCurrentView('home')"></i>
+        <span>个人中心</span>
+        <!--<span class="edit" @click="editInfo()" >编辑</span>-->
+    </header>
+    <main>
+        <img src="./img/girl.jpeg" alt="avatar" class="avatar">
+        <form action="">
+            <label>
+                <span>用户名：</span>
+                <input type="text" v-model="userInfo.name">
+            </label>
+            <label>
+                <span>手机号：</span>
+                <input type="text" v-model = "userInfo.phone">
+            </label>
+            <label>
+                <span>性别：</span>
+                <input type="text" v-model = "userInfo.sex">
+            </label>
+            <label>
+                <span>入学时间：</span>
+                <input type="text" v-model = "userInfo.admission_time">
+            </label>
+        </form>
+        <p>我发布的商品</p>
+        <div class="mineGoods" v-if="userGoods.length > 0">
+            <div v-for=" goods in userGoods" @click="CheckTheDetails(goods._id)" >
+                <div style=" background-image:url('./img/true.jpeg')" class="goodPic"></div>
+                <div>
+                    <p>{{ goods.goods_name }}</p>
+                    <p>
+                        <span>¥ {{ goods.price }}</span>
+                        <span> {{ goods.create_time | time }} </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div v-else>
+            <p>还没有发布商品哦～</p>
+        </div>
+    </main>
+    <footer>
+        <div  @click="changeCurrentView('home')">
+            <i class="fa fa-home" aria-hidden="true"></i>
+            <span>首页</span>
+        </div>
+        <div @click="changeCurrentView('publish')">
+            <div class="add">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="active" >
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <span>我的</span>
+        </div>
+    </footer>
 </section>
