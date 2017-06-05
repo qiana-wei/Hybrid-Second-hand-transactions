@@ -13,7 +13,7 @@ var db = mongoose.createConnection('localhost', 'secondhand-transformation'); //
 //router setup
 var index = require('./routes/index');
 var user_api = require('./routes/user_api');
-var good_api = require('./routes/goods_api')
+var good_api = require('./routes/goods_api');
 
 var userModel = require('./models/users')
 var goodModel = require('./models/goods')
