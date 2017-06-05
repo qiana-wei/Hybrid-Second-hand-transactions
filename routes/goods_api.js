@@ -36,6 +36,23 @@ router.get('/details/:id',function(req,res){
 router.get('/list',function(req,res) { 
     if(req.xhr || req.accepts('json,html')=='json'){
         goodsModel.find({})
+        .sort({'create_time':-1})
+        .populate('user_id')
+        .exec(function (err, goodsModel) {
+            if(err){
+                res.status(400).send({msg:'error',err}) 
+            }else{
+                res.status(200).send(goodsModel) 
+            }
+        })
+    }else{
+        res.status(400).send({msg:'not Json'}) 
+    } 
+})
+router.get('/list/like',function(req,res) { 
+    if(req.xhr || req.accepts('json,html')=='json'){
+        goodsModel.find({})
+        .sort({'like':-1})
         .populate('user_id')
         .exec(function (err, goodsModel) {
             if(err){

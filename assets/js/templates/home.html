@@ -4,8 +4,8 @@
     </header>
     <main>
         <nav>
-            <li class="active">发布时间</li>
-            <li>喜爱值</li>
+            <li @click="isNormal=true,sortByTime()"  v-bind:class="{ active: isNormal }">发布时间</li>
+            <li @click="isNormal=false,sortByLike()" v-bind:class="{ active: !isNormal }">喜爱值</li>
         </nav>
         <div class="content">
             <section v-for="goods in goods_list">

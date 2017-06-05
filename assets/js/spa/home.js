@@ -4,12 +4,14 @@ Vue.component('home', {
     data(){
         return{
             userInfo: this.$root.userInfo,
-            goods_list:''
+            goods_list:'',
+            isNormal:true
         }
     },
     mounted () {
         let url = `/api/good/list`;
         utils.DataService.get(url).done(res=>{
+            console.log(res);
             this.goods_list = res;
         })
     },
@@ -26,6 +28,20 @@ Vue.component('home', {
             let data = {like:num}
             utils.DataService.patch(url,data).done(res=>{
                 console.log(res);
+            })
+        },
+        sortByLike(){
+            let url = `/api/good/list/like`;
+            utils.DataService.get(url).done(res=>{
+                console.log(res);
+                this.goods_list = res;
+            })
+        },
+        sortByTime(){
+            let url = `/api/good/list`;
+            utils.DataService.get(url).done(res=>{
+                console.log(res);
+                this.goods_list = res;
             })
         }
     }
