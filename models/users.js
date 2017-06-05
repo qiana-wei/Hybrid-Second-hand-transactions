@@ -8,13 +8,6 @@ var userSchema = mongoose.Schema({
     photo:String
 })
 
-userSchema.statics.findByTelephone = function (telephone, cb) {
-    this.find({
-        telephone: new RegExp(telephone, 'i'),
-        cb
-    });
-}
-
 var userModel = mongoose.model('users', userSchema)
 
 module.exports = userModel;
