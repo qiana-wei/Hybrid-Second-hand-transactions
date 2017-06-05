@@ -1,16 +1,74 @@
 <section class="goods-details">
     <header>    
         <i class="fa fa-chevron-left" aria-hidden="true" @click="changeCurrentView('home')"></i>
-        <span>商品详情</span>
+        <span v-if="isdetails">商品详情</span>
+        <span v-else>评论留言</span>
     </header>
-    <main>
+    <p>
+        <span v-bind:class="{ active: isdetails }" @click="isdetails=true" >商品详情</span>
+        <b>|</b>
+        <span v-bind:class="{ active: !isdetails }" @click="isdetails=false">用户留言</span>
+    </p>
+    <main v-if="isdetails">
         <div class="mui-slider">
             <div class="mui-slider-group">
-                <div class="mui-slider-item"><a href="#"><img src="../../img/rabbit.jpeg" /></a></div>
-                <div class="mui-slider-item"><a href="#"><img src="../../img/mr.jpeg" /></a></div>
-                <div class="mui-slider-item"><a href="#"><img src="../../img/mrs.jpeg" /></a></div>
-                <div class="mui-slider-item"><a href="#"><img src="../../img/normal.png" /></a></div>
+                <div class="mui-slider-item">
+                    <div style="background-image:url(../../img/rabbit.jpeg)"></div>
+                </div>
+                <div class="mui-slider-item">
+                    <div style="background-image:url(../../img/welcome.jpeg)"></div>                    
+                </div>
+                <div class="mui-slider-item">
+                    <div style="background-image:url(../../img/true.jpeg)"></div>                    
+                </div>
+                <div class="mui-slider-item">
+                    <div style="background-image:url(../../img/dcbaf156c3dc85b2706213909912fbaa.jpg)"></div>                    
+                </div>
+            </div>
+            <div class="mui-slider-indicator">
+                <div class="mui-indicator mui-active"></div>
+                <div class="mui-indicator"></div>
+                <div class="mui-indicator"></div>
+                <div class="mui-indicator"></div>
             </div>
         </div>
+        <p class="title">{{ goodsInfo.goods_name }}</p>
+        <p class="info" >
+            <span>¥ {{ goodsInfo.price }}</span>
+            <span> {{ goodsInfo.degree }} 成新 </span>
+            <span><i class="fa fa-heart" aria-hidden="true"></i> {{ goodsInfo.like }} </span>
+        </p>
+        <p class='userInfo'>
+            <img src="./img/girl.jpeg" alt="avatar">
+            <span>{{ goodsInfo.user_id.name }}</span>
+        </p>
+        <p>种类：1，2，3，4</p>
+        <p>
+            描述:
+            <br>
+            {{ goodsInfo.description }}
+        </p>
+
+    </main>
+    <main v-else>
+        <section>
+            <p>
+                发表留言：
+            </p>
+            <textarea v-model="commentMsg" placeholder="说点什么吧。。。"></textarea>
+            <button class="bn pull-right" @click="publishComment()">发送</button>
+        </section>
+        <div class="commentsWrap">
+            <section v-for='comment in commentList'>
+                <p class='userInfo'>
+                    <img src="./img/girl.jpeg" alt="avatar">
+                    <span>{{comment.user_id.name}}</span>
+                </p>
+                <p>{{ comment.comment }}</p>
+                <p>{{ comment.time_stamp | time }}</p>
+                <!--<button class="bn">回复</button>-->
+            </section>
+        </div>
+        
     </main>
 </section>

@@ -5,32 +5,29 @@
     <main>
         <nav>
             <li class="active">发布时间</li>
-            <li>浏览量</li>
-            <li>留言量</li>
             <li>喜爱值</li>
         </nav>
         <div class="content">
-            <section v-for="goods in goods_list" @click="CheckTheDetails(goods._id)">
-                <div class="title">
+            <section v-for="goods in goods_list">
+                <div class="title" @click="CheckTheDetails(goods._id)">
                     <img src="./img/girl.jpeg" alt="avatar" class="avatar">
                     <span>{{ goods.user_id.name }}</span>
                 </div>
-                <div class="img_list">
+                <div class="img_list" @click="CheckTheDetails(goods._id)">
                     <div style=" background-image:url('./img/true.jpeg')"></div>
                     <div style=" background-image:url('./img/normal.png')"></div>
                     <div style=" background-image:url('./img/normal.png')"></div>
                 </div>
                 <div class="description">
-                    <div>
+                    <div @click="CheckTheDetails(goods._id)">
                         <span>¥</span>
                         <span>{{ goods.price }}</span>
                     </div>
                     <div>
-                        <p>{{ goods.name }}</p>
+                        <p @click="CheckTheDetails(goods._id)">{{ goods.goods_name }}</p>
                         <div>
                             <span>{{ goods.degree }} 成新</span>
-                            <span><i class="fa fa-commenting-o" aria-hidden="true"></i> 7</span>
-                            <span><i class="fa fa-heart" aria-hidden="true"></i>{{ goods.like }}</span>
+                            <span @click="addLike(goods._id,++goods.like)"><i class="fa fa-heart" aria-hidden="true"></i> {{ goods.like }}</span>
                         </div>
                     </div>
                 </div>
