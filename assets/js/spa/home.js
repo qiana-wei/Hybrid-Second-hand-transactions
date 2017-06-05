@@ -20,6 +20,13 @@ Vue.component('home', {
         CheckTheDetails(goodID){
             this.$emit('event','changeGoodsId',goodID)
             this.$emit('event','changeCurrentView','goods-details')
+        },
+        addLike(goodID,num){
+            let url = `/api/good/like/${goodID}`
+            let data = {like:num}
+            utils.DataService.patch(url,data).done(res=>{
+                console.log(res);
+            })
         }
     }
 })

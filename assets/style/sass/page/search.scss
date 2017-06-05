@@ -1,0 +1,121 @@
+.search{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    header{
+        width: 100vw;
+        height: 60px;
+        box-shadow: -1px 1px 1px -1px #ccc;
+        @include flex-center();
+        position: relative;
+        >label{
+            border:1px solid #ccc;
+            border-radius: 20px;
+            overflow: hidden;
+            padding: 0 10px;
+            background-color:rgba(220,220,220,0.7)
+            i{
+                color: #555;
+            }
+        }
+        input{
+            width: 50vw;
+            height: 25px;
+            border: none;
+            margin: 0;
+            margin-left: 10px;
+            background-color: transparent;
+            outline: none;
+        }
+        .fa-chevron-left{
+            position: absolute;
+            left: 30px;
+        }
+    }
+    >main{
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;  
+        flex-direction: column;
+        >div>p{
+            text-align: center;
+            margin-top: 20vh;
+        }
+        .content{
+            height: 100%;
+            overflow: scroll;
+            background: #eee;
+            >section{
+                width: 100%;
+                margin-bottom: 5px;
+                background: #fff;
+                >div{
+                    padding: 0 5px;
+                }
+            }
+            .title{
+                padding: 5px 0;
+                display: flex;
+                align-items: center; 
+                margin-bottom: 10px;
+                .avatar{
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    margin: 0 20px;
+                    border:1px solid #ccc;
+                }
+            }
+            .img_list{
+                height: 120px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                >div{
+                    width: 120px;
+                    height: 120px;
+                    background-repeat:no-repeat;
+                    background-position: center;
+                    background-size:contain;
+                }
+            }
+            .description{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                margin: 10px;
+                >div{
+                    &:first-child{
+                        margin-right: 10px;
+                        &>span:last-child{
+                            font-size: 30px;
+                        }
+                    }
+                    &:last-child{
+                        margin-left: 10px;
+                        flex: 1;
+                        &>p{
+                            font-size: 17px;
+                        }
+                        &>div{
+                            display: flex;
+                            justify-content: flex-end;
+                            align-items: center;
+                            padding-bottom: 5px;
+                            >span{
+                                display: inline-block;
+                                min-width: 40px;
+                                margin-left: 20px; 
+                            }
+                        }
+                    }
+                }
+            }
+            .fa-heart{
+                color: #f00;
+            }
+        }
+    }
+}
