@@ -119,7 +119,6 @@ router.patch('/info',function(req,res){
 })
 //获取用户信息
 router.get('/:id',function(req,res){
-    console.log(req.path);
     if(req.xhr || req.accepts('json,html')=='json'){
         let userId = req.path.split('/').pop()
         userModel.find({_id:userId},function(err,users){
@@ -134,7 +133,7 @@ router.get('/:id',function(req,res){
 
 //获取用户发布的商品
 router.get('/goods/:id',function(req,res){
-    let userId = req.path.split('/').pop();
+    let userId = req.params.id
     goodsModel.find({user_id:userId},function(err,goods){
         if(goods.length>0){
             res.status(200).send(goods)

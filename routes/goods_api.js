@@ -18,7 +18,7 @@ router.post('/',function(req,res){
 //获取商品
 router.get('/details/:id',function(req,res){
     if(req.xhr || req.accepts('json,html')=='json'){
-        let id = req.path.split('/').pop()
+        let id = req.params.id
         goodsModel.findOne({_id:id})
         .populate('user_id')
         .exec(function (err, goodsModel) {
@@ -61,7 +61,7 @@ router.post('/:id/comment',function(req,res){
 //获取留言
 router.get('/:id/comment',function(req,res){
     if(req.xhr || req.accepts('json,html')=='json'){
-        let id = req.path.split('/')[1]
+        let id = req.params.id
         commentsModel.find({goods_id:id})
         .populate('user_id')
         .exec(function(err,commentsModel){
@@ -75,6 +75,37 @@ router.get('/:id/comment',function(req,res){
     }else{
         res.status(400).send({msg:'not Json'}) 
     }
+})
+
+//搜索商品
+router.get('/search',function(req,res){
+    let key = req.param('key')
+    let reg =new RegExp(`${key}`);
+    goodsModel.find({goods_name:reg})
+        .populate('user_id')
+        .exec(function (err, goodsModel) {
+            if(err){
+                res.status(400).send({msg:'error',err}) 
+            }else{
+                res.status(200).send(goodsModel) 
+            }
+        })
+    
+})
+
+//添加喜爱值
+router.patch('/like/:id',function(req,res){
+    let id= req.params.id
+    let update ={like: req.body.like}
+    goodsModel.update({_id:id},update,function(err,result){
+        if(err){
+            console.log(err);
+            res.status(400).send(err)                
+        }else{
+            console.log(result)
+            res.status(200).send(result)                
+        }
+    })
 })
 
 module.exports = router;
