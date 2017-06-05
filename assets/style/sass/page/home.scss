@@ -7,7 +7,7 @@
     >header{
         width: 100vw;
         height: 60px;
-        box-shadow: -1px -1px 1px 1px #ccc;
+        box-shadow: -1px 1px 1px -1px #ccc;
         @include flex-center();
         >label{
             border:1px solid #ccc;
@@ -70,7 +70,7 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            box-shadow: -1px  1px #ccc;
+            border-bottom: 1px solid #ccc;
             li{
                 list-style: none;
             }
@@ -84,8 +84,6 @@
             background: #eee;
             >section{
                 width: 100%;
-                border-bottom:1px solid #ccc;
-                border-top: 1px solid #ccc;
                 margin-bottom: 5px;
                 background: #fff;
                 >div{
