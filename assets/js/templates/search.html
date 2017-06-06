@@ -4,8 +4,12 @@
         <label><input type="text" placeholder="搜索商品分类、名称" v-model="searchContent"><i class="fa fa-search" aria-hidden="true" @click="searchGoods()"></i></label>
     </header>
     <main>
+
         <div v-if="goods_list == '未找到商品'">
             <p>{{ goods_list }}</p>
+        </div>
+        <div v-else-if="goods_list == ''">
+            <p>输入关键词，搜索需要的商品吧～</p>
         </div>
         <div class="content" v-else>
            <section v-for="goods in goods_list">
