@@ -33,7 +33,6 @@ new Vue({
             this[type](params);
         },
         changeCurrentView(name) {
-            console.log(name);
             this.currentView = name;
         },
         changeGoodsId(id){

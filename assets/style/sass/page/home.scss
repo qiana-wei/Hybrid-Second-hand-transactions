@@ -111,9 +111,14 @@
                 >div{
                     width: 120px;
                     height: 120px;
-                    background-repeat:no-repeat;
-                    background-position: center;
-                    background-size:contain;
+                    display: flex;
+                    justify-content: center;
+                    align-content: center;
+                    align-items: center;
+                    >img{
+                        max-width: 100%!important;
+                        max-height: 100%!important;
+                    }
                 }
             }
             .description{

@@ -15,15 +15,16 @@ Vue.component('goods-details', {
     },
     mounted(){
         this.goods_id = this.$root.goods_id;
-        console.log(this.goods_id);
-        var gallery = mui('.mui-slider');
-        gallery.slider({
-            interval:0//自动轮播周期，若为0则不自动播放，默认为0；
-        });
         let goodUrl = `/api/good/details/${this.goods_id}`
         utils.DataService.get(goodUrl).done(res=>{
-            console.log(res);
             this.goodsInfo = res;
+            let timer = setTimeout(()=>{
+                var gallery = mui('.mui-slider');
+                gallery.slider({
+                    interval:0
+                });
+            },1000)
+            
         })
         let commentUrl = `/api/good/${this.goods_id}/comment`
         utils.DataService.get(commentUrl).done(res=>{
@@ -43,7 +44,6 @@ Vue.component('goods-details', {
                 user_id : this.userInfo._id
             }
             utils.DataService.post(url,data).done(res=>{
-                console.log(res);
                 this.commentList.unshift(res)
                 this.commentMsg=''
             })

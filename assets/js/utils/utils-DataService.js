@@ -18,7 +18,7 @@ let DataService = {
 };
 
 DataService.ajax = function (type, url, data, ) {
-    // url = `http://128.199.156.9:3000${url}`
+    url = `http://128.199.156.9:3000${url}`
     let re = /\?\?/;
     if (re.test(url)) {
         console.error('please dont\'t add GET string after url which is incluid \'?\'. ');

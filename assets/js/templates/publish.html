@@ -6,8 +6,14 @@
     <main>
         <div>
             <p>上传商品图片</p>
-            <div>
-                <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+            <div class="picList">
+                <div v-if="picSrc.length > 0" v-for="src in picSrc" class="previewPic">
+                    <img :src="src" alt="">
+                </div>              
+                <label for="pic">
+                    <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                </label>
+                <input type="file" multiple accept="image/*" style="display:none" id="pic" @change="addPic($event)">
             </div>
         </div>
         <div>
@@ -28,7 +34,7 @@
         </div>
         <div>
             <p>商品描述</p>
-            <textarea placeholder="详详细细的描述更容易买出哦。" v-model="goodsInfo.description"></textarea>
+            <textarea placeholder="详详细细的描述更容易卖出哦。" v-model="goodsInfo.description"></textarea>
         </div>
         <div class="btn">
             <button class="bn" @click="changeCurrentView('home')">取消</button>        

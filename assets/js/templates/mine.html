@@ -27,7 +27,9 @@
         <p>我发布的商品</p>
         <div class="mineGoods" v-if="userGoods.length > 0">
             <div v-for=" goods in userGoods" @click="CheckTheDetails(goods._id)" >
-                <div style=" background-image:url('./img/true.jpeg')" class="goodPic"></div>
+                <div class="goodPic">
+                    <img :src="goods.img[0]" alt="">
+                </div>
                 <div>
                     <p>{{ goods.goods_name }}</p>
                     <p>

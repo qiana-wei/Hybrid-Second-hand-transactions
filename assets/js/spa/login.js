@@ -26,9 +26,7 @@ Vue.component('login', {
             let data = {
                 phone:this.user_phone
             }
-            utils.DataService.post(url,data).done(res=>{
-                console.log(res);
-            })
+            utils.DataService.post(url,data)
         },
         checkCode(){
             let url = `/api/user/register`
@@ -37,7 +35,6 @@ Vue.component('login', {
                 check_code:this.check_code
             }
              utils.DataService.post(url,data).done(res=>{
-                console.log(res);
                 localStorage.setItem('userInfo',JSON.stringify(res.userInfo))
                 this.$emit('event','changeUserInfo',res.userInfo)
                 this.$emit('event','changeCurrentView',res.changeCurrentView)

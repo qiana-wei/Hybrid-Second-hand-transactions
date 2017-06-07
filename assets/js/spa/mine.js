@@ -15,10 +15,8 @@ Vue.component('mine', {
         let goodsUrl = `/api/user/goods/${this.$root.userInfo._id}`
         utils.DataService.get(goodsUrl).done(res=>{
             if(res.length > 0){
-                console.log(res);
                 this.userGoods = res
             }else{
-                console.log(res);
                 this.userGoods ='';
             }
         })
@@ -26,9 +24,6 @@ Vue.component('mine', {
     methods: {
         changeCurrentView(name){
             this.$emit('event','changeCurrentView',name)
-        },
-        editInfo(){
-            console.log('edit');
         },
         CheckTheDetails(goodID){
             this.$emit('event','changeGoodsId',goodID)

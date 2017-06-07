@@ -18,9 +18,9 @@
                     <span>{{ goods.user_id.name }}</span>
                 </div>
                 <div class="img_list" @click="CheckTheDetails(goods._id)">
-                    <div style=" background-image:url('./img/true.jpeg')"></div>
-                    <div style=" background-image:url('./img/normal.png')"></div>
-                    <div style=" background-image:url('./img/normal.png')"></div>
+                    <div v-for="img in goods.img">
+                        <img :src="img" alt="">
+                    </div>
                 </div>
                 <div class="description">
                     <div @click="CheckTheDetails(goods._id)">

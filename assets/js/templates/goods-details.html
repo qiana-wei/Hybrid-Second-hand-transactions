@@ -12,24 +12,14 @@
     <main v-if="isdetails">
         <div class="mui-slider">
             <div class="mui-slider-group">
-                <div class="mui-slider-item">
-                    <div style="background-image:url(../../img/rabbit.jpeg)"></div>
-                </div>
-                <div class="mui-slider-item">
-                    <div style="background-image:url(../../img/welcome.jpeg)"></div>                    
-                </div>
-                <div class="mui-slider-item">
-                    <div style="background-image:url(../../img/true.jpeg)"></div>                    
-                </div>
-                <div class="mui-slider-item">
-                    <div style="background-image:url(../../img/dcbaf156c3dc85b2706213909912fbaa.jpg)"></div>                    
+                <div class="mui-slider-item" v-for="img in goodsInfo.img">
+                    <div>
+                        <img :src="img" alt="">
+                    </div>
                 </div>
             </div>
             <div class="mui-slider-indicator">
-                <div class="mui-indicator mui-active"></div>
-                <div class="mui-indicator"></div>
-                <div class="mui-indicator"></div>
-                <div class="mui-indicator"></div>
+                <div v-for="img in goodsInfo.img"  class="mui-indicator"></div>
             </div>
         </div>
         <p class="title">{{ goodsInfo.goods_name }}</p>
@@ -39,7 +29,7 @@
             <span><i class="fa fa-heart" aria-hidden="true"></i> {{ goodsInfo.like }} </span>
         </p>
         <p class='userInfo'>
-            <img src="./img/girl.jpeg" alt="avatar">
+            <img src="/img/girl.jpeg" alt="avatar">
             <span>{{ goodsInfo.user_id.name }}</span>
         </p>
         <p>种类：1，2，3，4</p>

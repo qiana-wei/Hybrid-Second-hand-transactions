@@ -12,14 +12,11 @@ Vue.component('welcome', {
     },
     methods: {
         changeCurrentView() {
-            // if(this.userInfo){
-            //     console.log('home');
-            //     this.$emit('event','changeCurrentView','home')
-            // }else{
-            //     console.log('login');
-            //     this.$emit('event','changeCurrentView','login')                
-            // }
-            this.$emit('event','changeCurrentView','supplement')
+            if(this.userInfo){
+                this.$emit('event','changeCurrentView','home')
+            }else{
+                this.$emit('event','changeCurrentView','login')                
+            }
         }
     }
 })

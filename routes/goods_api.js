@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var fs = require("fs");
 var userModel = require('../models/users')
 var goodsModel = require('../models/goods')
 var commentsModel = require('../models/comments')
@@ -10,11 +10,52 @@ router.post('/',function(req,res){
     if(req.xhr || req.accepts('json,html')=='json'){
         let Entity = new goodsModel(req.body)
         Entity.save();
-        res.status(200).send(Entity) 
+        var base64Data = [];
+        let user_id = req.body.user_id
+        let goods_id = Entity._id
+        let picPath = []
+        let path =`www/pictures/goods/${goods_id}`           
+        fs.mkdir(path,function(err){
+            if(err){
+                console.log(err);
+            }else{
+                req.body.picSrc.forEach(function(src,index) {
+                    let base64Data = src.replace(/^data:image\/\w+;base64,/, "");
+                    var dataBuffer = new Buffer(base64Data, 'base64');
+                    let imgName = req.body.pictureFileList[index] + '.jpg'
+                    let imgPath=`${path}/${imgName}`
+                    picPath.push(imgPath)
+                        fs.writeFile(imgPath, dataBuffer, function(err){
+                            if(err){
+                                console.log(err);
+                            }else{
+                                console.log('保存成功');
+                            }
+                        })
+                }, this);
+                picPath[0] = picPath[0] ? picPath[0].replace('www','') : '/img/normal.png'
+                picPath[1] = picPath[1] ? picPath[1].replace('www','') : '/img/normal.png'
+                picPath[2] = picPath[2] ? picPath[2].replace('www','') : '/img/normal.png' 
+                let update = {
+                    img:picPath
+                }
+                goodsModel.update({_id:goods_id},update,function(err,result){
+                    if(err){
+                        res.status(400).send(err)                
+                    }else{
+                        goodsModel.find({_id:goods_id},function(err,goods){
+                            console.log(goods);
+                            res.status(200).send(goods[0]) 
+                        })               
+                    }
+                })
+            }
+        }) 
     }else{
         res.status(400).send({msg:'not Json'}) 
     }
 })
+
 //获取商品
 router.get('/details/:id',function(req,res){
     if(req.xhr || req.accepts('json,html')=='json'){
@@ -85,7 +126,6 @@ router.get('/:id/comment',function(req,res){
             if(err){
                 res.status(400).send({msg:'error',err}) 
             }else{
-                console.log(commentsModel);
                res.status(200).send(commentsModel) 
             }
         })
@@ -116,10 +156,8 @@ router.patch('/like/:id',function(req,res){
     let update ={like: req.body.like}
     goodsModel.update({_id:id},update,function(err,result){
         if(err){
-            console.log(err);
             res.status(400).send(err)                
         }else{
-            console.log(result)
             res.status(200).send(result)                
         }
     })
